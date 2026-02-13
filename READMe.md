@@ -119,15 +119,15 @@ terraform output
  ### Outputs obtenus après déploiement
 
 ** Application Web (App Service)** 
-app-hubspoke-dev-9b98d5.azurewebsites.net
+```bashapp-hubspoke-dev-9b98d5.azurewebsites.net```bash
 
 ** Base de données Azure SQL**  
 
-sql-hubspoke-dev-9b98d5.database.windows.net
+```sql-hubspoke-dev-9b98d5.database.windows.net```
 
 ** Azure Key Vault**
 
-kv-hubspoke-dev-9b98d5  
+```kv-hubspoke-dev-9b98d5 ``` 
 
 ### 
 
