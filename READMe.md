@@ -21,6 +21,7 @@ Hub VNet  ←→  Spoke VNet
 ---
 
 ## Structure du projet
+NOM du Dossier: project-2-hub-spoke
 ```bash
 project-2-hub-spoke/
 ├── backend.tf         #stokage du state dans Azure
