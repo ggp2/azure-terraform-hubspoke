@@ -8,22 +8,19 @@ Il repose sur des services PaaS afin d’éviter les limitations liées aux quot
 ---
 
 ## Architecture
-
-
+```bash
 Hub VNet  ←→  Spoke VNet
-
   │
   ├── App Service (Linux)
   ├── Azure SQL
   ├── Key Vault (RBAC)
   └── Log Analytics
+``` 
 
 ---
 
 ## Structure du projet
-
-
-
+```bash
 project-2-hub-spoke/
 ├── backend.tf         #stokage du state dans Azure
 ├── main.tf            #lien entre les deux Modules
@@ -53,7 +50,7 @@ project-2-hub-spoke/
        ├── main.tf
        ├── variables.tf
        └── outputs.tf
-
+```
 
 ---
 
@@ -172,40 +169,6 @@ kv-hubspoke-dev-9b98d5
 
 
 ---
-
-## 📂 Structure du Projet
-
-```bash
-project-2-hub-spoke/
-├── global/
-│   ├── backend.tf
-│   ├── providers.tf
-│   └── versions.tf
-│
-├── environments/
-│   ├── dev/
-│   │   ├── main.tf
-│   │   └── terraform.tfvars
-│   │
-│   └── prod/
-│       ├── main.tf
-│       └── terraform.tfvars
-│
-├── modules/
-│   ├── network/
-│   ├── security/
-│   ├── app/
-│   └── monitoring/
-│
-├── scripts/
-│   ├── init.sh
-│   ├── plan.sh
-│   └── apply.sh
-│
-├── .gitignore
-├── .terraform.lock.hcl
-└── README.md
-
 
 ### App Service
 
