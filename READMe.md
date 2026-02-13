@@ -25,17 +25,11 @@ Hub VNet  ←→  Spoke VNet
 
 
 project-2-hub-spoke/
-
 ├── backend.tf         #stokage du state dans Azure
-
 ├── main.tf            #lien entre les deux Modules
-
 ├── variables.tf
-
 ├── outputs.tf         #Resultats
-
 ├── versions.tf
-
 ├── README.md
 ├── .gitignore
 ├── .terraform.lock.hcl
@@ -119,8 +113,6 @@ terraform output
 ## Tests
 ### Accès à l’application web :
 
-
-
 ```bash
    https://app-hubspoke-dev-9b98d5.azurewebsites.net
 ```
@@ -129,14 +121,14 @@ terraform output
 ## Résultat final
  ### Outputs obtenus après déploiement
 
-\*\* Application Web (App Service)\*\* 
+** Application Web (App Service)** 
 app-hubspoke-dev-9b98d5.azurewebsites.net
 
-\*\* Base de données Azure SQL\*\*  
+** Base de données Azure SQL**  
 
 sql-hubspoke-dev-9b98d5.database.windows.net
 
-\*\* Azure Key Vault\*\*
+** Azure Key Vault**
 
 kv-hubspoke-dev-9b98d5  
 
@@ -169,20 +161,20 @@ kv-hubspoke-dev-9b98d5
 ## Captures d’écran
  ### Terraform Apply
 
-!\[Terraform Apply](screenshots/terraform-apply.png)
+[Terraform Apply](screenshots/terraform-apply.png)
 
 ### Resource Groups Azure
 
-![Resource Groups](screenshots/resource-groups.png)
+[Resource Groups](screenshots/resource-groups.png)
 
 ### App Service
 
-!\[App Service](screenshots/app-service.png)
+[App Service](screenshots/app-service.png)
 
 ### Azure Key Vault
 
-!\[Key Vault](screenshots/keyvault.png)
+[Key Vault](screenshots/keyvault.png)
 
 ### Log Analytics
 
-!\[Log Analytics](screenshots/log-analytics.png)
+[Log Analytics](screenshots/log-analytics.png)
