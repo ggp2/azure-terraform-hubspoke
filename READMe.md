@@ -1,9 +1,10 @@
-# Projet Azure Terraform Hub-Spoke
+# Projet Cloud Azure – Architecture Hub-Spoke avec Terraform
 
 ## Description
 
-Ce projet démontre la mise en place d’une infrastructure professionnelle sur Microsoft Azure à l’aide de Terraform.
-Il repose sur des services PaaS afin d’éviter les limitations liées aux quotas de machines virtuelles et respecte les bonnes pratiques en matière de sécurité, de supervision et d’automatisation.
+Ce projet illustre la conception et le déploiement automatisé d’une infrastructure cloud sur Microsoft Azure à l’aide de Terraform.
+Il met en œuvre une architecture Hub-Spoke, des services PaaS (App Service, Azure SQL), un backend distant, une gestion sécurisée des secrets via Key Vault et une supervision centralisée avec Log Analytics, conformément aux bonnes pratiques DevOps.
+
 
 ---
 
