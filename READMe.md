@@ -1,52 +1,26 @@
-\# Projet Azure Terraform Hub-Spoke
+# Projet Azure Terraform Hub-Spoke
 
-
-
-\## Description
-
-
+## Description
 
 Ce projet démontre la mise en place d’une infrastructure professionnelle sur Microsoft Azure à l’aide de Terraform.
-
-
-
 Il repose sur des services PaaS afin d’éviter les limitations liées aux quotas de machines virtuelles et respecte les bonnes pratiques en matière de sécurité, de supervision et d’automatisation.
-
-
 
 ---
 
-
-
-\## Architecture
-
+## Architecture
 
 
 Hub VNet  ←→  Spoke VNet
 
-&nbsp;  │
-
-&nbsp;  ├── App Service (Linux)
-
-&nbsp;  ├── Azure SQL
-
-&nbsp;  ├── Key Vault (RBAC)
-
-&nbsp;  └── Log Analytics
-
-
-
-
-
-
-
-
+  │
+  ├── App Service (Linux)
+  ├── Azure SQL
+  ├── Key Vault (RBAC)
+  └── Log Analytics
 
 ---
 
-
-
-\## Structure du projet
+## Structure du projet
 
 
 
@@ -63,273 +37,124 @@ project-2-hub-spoke/
 ├── versions.tf
 
 ├── README.md
-
 ├── .gitignore
-
 ├── .terraform.lock.hcl
-
 ├── env/
-
 │   ├── dev.tfvars.example      # environnement dev
-
 │   └── prod.tfvars.example
-
 └── modules/
-
-&nbsp;   ├── network/
-
-&nbsp;   │   ├── main.tf
-
-&nbsp;   │   ├── variables.tf
-
-&nbsp;   │   └── outputs.tf
-
-&nbsp;   ├── app/
-
-&nbsp;   │   ├── main.tf
-
-&nbsp;   │   ├── variables.tf
-
-&nbsp;   │   └── outputs.tf
-
-&nbsp;   ├── security/
-
-&nbsp;   │   ├── main.tf
-
-&nbsp;   │   ├── variables.tf
-
-&nbsp;   │   └── outputs.tf
-
-&nbsp;   └── monitoring/
-
-&nbsp;       ├── main.tf
-
-&nbsp;       ├── variables.tf
-
-&nbsp;       └── outputs.tf
-
-
-
-
-
-
-
+   ├── network/
+   │   ├── main.tf
+   │   ├── variables.tf
+   │   └── outputs.tf
+   ├── app/
+   │   ├── main.tf
+   │   ├── variables.tf
+   │   └── outputs.tf
+   ├── security/
+   │   ├── main.tf
+   │   ├── variables.tf
+   │   └── outputs.tf
+   └── monitoring/
+       ├── main.tf
+       ├── variables.tf
+       └── outputs.tf
 
 
 ---
 
 
+## Technologies utilisées
 
-\## Technologies utilisées
-
-
-
-\- Terraform (≥ 1.6)
-
-\- Azure CLI
-
-\- Azure App Service (Linux)
-
-\- Azure SQL Database
-
-\- Azure Key Vault (RBAC)
-
-\- Azure Log Analytics
-
-
+- Terraform (≥ 1.6)
+- Azure CLI
+- Azure App Service (Linux)
+- Azure SQL Database
+- Azure Key Vault (RBAC)
+- Azure Log Analytics
 
 ---
 
 
-
-\## Backend distant (State Terraform)
-
-
+## Backend distant (State Terraform)
 
 Le fichier d’état Terraform est stocké dans Azure Storage via le backend azurerm.
-
-
-
 Cela permet un travail collaboratif sécurisé et un verrouillage automatique du state.
-
-
 
 ---
 
+## Déploiement
 
-
-\## Déploiement
-
-
-
-\### Connexion à Azure
-
-
+### Connexion à Azure
 
 ```bash
-
 az login
-
-
-
-
-
-\### Initialisation
-
-
-
-```bash
-
-&nbsp; terraform init
-
 ```
 
+### Initialisation
 
-
-\### validation
-
-
-
+```bash
+   terraform init
+```
+### validation
 ```bash  
-
 terraform validate
-
-&nbsp;```
-
-
-
-\### Planification 
-
-
-
-```bash 
-
-&nbsp;terraform plan -var-file="env/dev.tfvars"
-
-&nbsp; ```
-
-
-
-\### Déploiement
-
-
-
-```bash 
-
-terraform apply -var-file="env/dev.tfvars" 
-
 ```
+### Planification
 
+```bash 
+terraform plan -var-file="env/dev.tfvars"
+ ```
 
+### Déploiement
 
-
-
-\### Affichage des résultats
+```bash 
+terraform apply -var-file="env/dev.tfvars" 
+```
+### Affichage des résultats
 
 ```bash
-
 terraform output
-
 ```
-
-
-
-
-
-\## Tests
-
-\### Accès à l’application web :
+## Tests
+### Accès à l’application web :
 
 
 
 ```bash
    https://app-hubspoke-dev-9b98d5.azurewebsites.net
-
-
-
 ```
-
-
-
 ---
 
-
-
-\## Résultat final
-
-
-
-\### Outputs obtenus après déploiement
-
-
+## Résultat final
+ ### Outputs obtenus après déploiement
 
 \*\* Application Web (App Service)\*\* 
-
 app-hubspoke-dev-9b98d5.azurewebsites.net
-
-
-
-
 
 \*\* Base de données Azure SQL\*\*  
 
 sql-hubspoke-dev-9b98d5.database.windows.net
 
-
-
-
-
 \*\* Azure Key Vault\*\*
 
 kv-hubspoke-dev-9b98d5  
 
+### 
 
-
-
-
-&nbsp;
-
-
-
-
-
-\### 
-
-
-
-
-
-
-
-\## **Dépannage (Troubleshooting)**
-
+## **Dépannage (Troubleshooting)**
 
 
 | Problème             | Solution                                      |
-
 | -------------------- | --------------------------------------------- |
-
 | Erreur 403 Key Vault | Attribuer le rôle "Key Vault Secrets Officer" |
-
 | Problème de quota VM | Utiliser des services PaaS                    |
-
 | Blocs dupliqués      | Nettoyer les fichiers Terraform               |
-
-| Metrics obsolètes    | Utiliser enabled\_metric                       |
-
+| Metrics obsolètes    | Utiliser enabled\_metric                      |
 | Outputs vides        | Compléter outputs.tf                          |
 
 
-
-
-
-
-
-
-
-\## Compétences démontrées
-
-
+## Compétences démontrées
 
 * Infrastructure as Code (Terraform)
 * Architecture réseau Hub-Spoke
@@ -339,61 +164,25 @@ kv-hubspoke-dev-9b98d5
 * Supervision et logs
 * Dépannage technique
 
-
-
-
-
 ---
 
-
-
-\## Captures d’écran
-
-
-
-\### Terraform Apply
+## Captures d’écran
+ ### Terraform Apply
 
 !\[Terraform Apply](screenshots/terraform-apply.png)
 
+### Resource Groups Azure
 
+![Resource Groups](screenshots/resource-groups.png)
 
-\### Resource Groups Azure
-
-!\[Resource Groups](screenshots/resource-groups.png)
-
-
-
-\### App Service
+### App Service
 
 !\[App Service](screenshots/app-service.png)
 
-
-
-\### Azure Key Vault
+### Azure Key Vault
 
 !\[Key Vault](screenshots/keyvault.png)
 
-
-
-\### Log Analytics
+### Log Analytics
 
 !\[Log Analytics](screenshots/log-analytics.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
