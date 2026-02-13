@@ -167,6 +167,46 @@ kv-hubspoke-dev-9b98d5
 
 [Resource Groups](screenshots/resource-groups.png)
 
+
+
+
+
+---
+
+## 📂 Structure du Projet
+
+```bash
+project-2-hub-spoke/
+├── global/
+│   ├── backend.tf
+│   ├── providers.tf
+│   └── versions.tf
+│
+├── environments/
+│   ├── dev/
+│   │   ├── main.tf
+│   │   └── terraform.tfvars
+│   │
+│   └── prod/
+│       ├── main.tf
+│       └── terraform.tfvars
+│
+├── modules/
+│   ├── network/
+│   ├── security/
+│   ├── app/
+│   └── monitoring/
+│
+├── scripts/
+│   ├── init.sh
+│   ├── plan.sh
+│   └── apply.sh
+│
+├── .gitignore
+├── .terraform.lock.hcl
+└── README.md
+
+
 ### App Service
 
 [App Service](screenshots/app-service.png)
