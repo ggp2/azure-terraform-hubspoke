@@ -37,9 +37,12 @@ module "app" {
   sql_admin_login    = var.sql_admin_login
   sql_admin_password = var.sql_admin_password
 
-  # on passe KV plus tard (après sa création) -> on crée d'abord KV sans RBAC app ? non:
-  # On va créer d'abord l'app, puis KV avec RBAC app, puis secret.
-  # Pour éviter le cycle, on crée KV après avoir l'identity.
+
+# Pour éviter une dépendance circulaire entre les ressources :
+# 1.Je  Crée d’abord l’Application (Managed Identity)
+# 2. Créer ensuite le Key Vault avec les droits RBAC associés
+# 3. Ajouter enfin les secrets dans le Key Vault
+  
   key_vault_id = module.security.key_vault_id
 }
 
